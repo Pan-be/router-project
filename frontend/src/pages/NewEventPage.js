@@ -1,4 +1,4 @@
-import { json } from "react-router-dom"
+import { json, redirect } from "react-router-dom"
 import EventForm from "../components/EventForm"
 
 const NewEventPage = (props) => {
@@ -7,7 +7,7 @@ const NewEventPage = (props) => {
 
 export default NewEventPage
 
-export const action = async ({ request }) => {
+export async function action({ request }) {
 	const data = await request.formData()
 
 	const eventData = {
@@ -20,15 +20,14 @@ export const action = async ({ request }) => {
 	const response = await fetch("http://localhost:8080/events", {
 		method: "POST",
 		headers: {
-			"Content-Type": "aplication/json,",
+			"Content-Type": "application/json",
 		},
 		body: JSON.stringify(eventData),
 	})
-	console.log(response)
 
 	if (!response.ok) {
-		throw json({ message: "Could not save event" }, { status: 500 })
-	} else {
-		return response
+		throw json({ message: "Could not save event." }, { status: 500 })
 	}
+
+	return redirect("/events")
 }
