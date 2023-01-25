@@ -1,5 +1,11 @@
+import PageContent from "../components/PageContent"
+
 const HomePage = (props) => {
-	return <div>Main Page</div>
+	return (
+		<PageContent title='Events browser'>
+			<p>Browse all events!</p>
+		</PageContent>
+	)
 }
 
 export default HomePage
