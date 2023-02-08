@@ -47,7 +47,7 @@ function MainNavigation() {
 					</li>
 					<li>
 						<Form action='/logout' method='post'>
-							<butto>Logout</butto>
+							<button>Logout</button>
 						</Form>
 					</li>
 				</ul>
